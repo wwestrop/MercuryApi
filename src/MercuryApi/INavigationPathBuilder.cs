@@ -62,6 +62,8 @@ namespace MercuryApi
             }
         }
 
+        // TODO add caching of some sort to avoid repeated reflection
+
         private Type StreamlineCollectionType(Type type) {
 
             if (type.GetInterfaces().Any(i => i == typeof(IEnumerable))) {

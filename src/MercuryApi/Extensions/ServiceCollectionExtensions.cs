@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace MercuryApi
+namespace MercuryApi.Extensions
 {
     public static class ServiceCollectionExtensions {
         public static IServiceCollection AddMercuryApi(this IServiceCollection services) {
