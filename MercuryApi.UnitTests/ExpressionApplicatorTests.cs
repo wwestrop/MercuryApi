@@ -42,7 +42,7 @@ namespace MercuryApi.UnitTests
         [Fact]
         public void Test1()
         {
-            sut.BuildNavigationPath(typeof(Customer), new[] { "Orders", "products", "manufacturer", "address" });
+            var res = new NavigationPathBuilder().Build(typeof(Customer), new[] { "Orders", "products", "manufacturer", "address" });
 
             sut.Build("basket,basket.products");
 

@@ -10,6 +10,12 @@ namespace MercuryApi.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly RequestScopedStorage _rss; 
+
+        public HomeController(RequestScopedStorage rss) {
+            this._rss = rss;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -18,6 +24,8 @@ namespace MercuryApi.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+
+            // HttpContext
 
             return View();
         }
