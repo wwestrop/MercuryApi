@@ -16,19 +16,19 @@ namespace MercuryApi.UnitTests
 
         // Branching navigation  --- i.e. includes for a.b.c.d but also a.b.c.e.f.g (note we forked off after 'c')
 
+        // Include entities only as many times as needed? (Unless sub-entities require that navigation-property to be walked through first, in which case, start with the deepest paths?)
+
+        // Handle multiple sub-includes off the same sub-entity
+
         // x Empty list of include requests
 
         // x List containing duplicates
 
         // x Handle HTTP-encoded separators
 
-        // Correctly breaks down Include and ThenInclude
-
-        // Include entities only as many times as needed? (Unless sub-entities require that navigation-property to be walked through first, in which case, start with the deepest paths?)
+        // Correctly breaks down Include and ThenInclude        
 
         // x Handle dotted include paths
-
-        // Handle multiple sub-includes off the same sub-entity
 
         // Handle non-collections
 

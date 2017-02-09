@@ -280,5 +280,69 @@ namespace MercuryApi.UnitTests
             Assert.Equal("address", navProperty3_b);
         }
 
+        /// <summary>
+        /// i.e. dotted navigation where the same object is navigated through twice, in order to include two of its child entities
+        /// IOW two include statements have the same prefix
+        /// </summary>
+        [Fact]
+        public void Parses_Branching_Navigation() {
+
+            // Arrange
+            var queryString = new QueryCollection(new Dictionary<string, StringValues> {
+                { "include", new StringValues("order.product.manufacturer, order.product.reviews") }
+            });
+
+            // Act
+            var includePaths = sut.Parse(queryString);
+
+            // Assert
+            includePaths = includePaths.OrderBy(p => p[2]).ToArray();
+            Assert.Equal(2, includePaths.Length);
+            Assert.Equal(3, includePaths[0].Length);
+            Assert.Equal(3, includePaths[1].Length);
+
+            var navProperty1_a = includePaths[0][0];
+            var navProperty1_b = includePaths[0][1];
+            var navProperty1_c = includePaths[0][2];
+            var navProperty2_a = includePaths[1][0];
+            var navProperty2_b = includePaths[1][1];
+            var navProperty2_c = includePaths[1][2];
+
+            Assert.Equal("order", navProperty1_a);
+            Assert.Equal("product", navProperty1_b);
+            Assert.Equal("manufacturer", navProperty1_c);
+            Assert.Equal("order", navProperty2_a);
+            Assert.Equal("product", navProperty2_b);
+            Assert.Equal("reviews", navProperty2_c);
+        }
+
+        /// <summary>
+        /// i.e. redundant includes which are already picked up by other include params
+        /// </summary>
+        [Fact]
+        public void Optimises_Multiple_Dotted_Include_Parameters_Where_One_Is_Subset_Of_Another() {
+
+            // Arrange
+            var queryString = new QueryCollection(new Dictionary<string, StringValues> {
+                { "include", new StringValues("order.product.manufacturer, order.product.manufacturer.address, order.product, order") }
+            });
+
+            // Act
+            var includePaths = sut.Parse(queryString);
+
+            // Assert
+            Assert.Equal(1, includePaths.Length);
+            Assert.Equal(4, includePaths[0].Length);
+
+            var navProperty1_a = includePaths[0][0];
+            var navProperty1_b = includePaths[0][1];
+            var navProperty1_c = includePaths[0][2];
+            var navProperty1_d = includePaths[0][3];
+
+            Assert.Equal("order", navProperty1_a);
+            Assert.Equal("product", navProperty1_b);
+            Assert.Equal("manufacturer", navProperty1_c);
+            Assert.Equal("address", navProperty1_d);
+        }
     }
 }
