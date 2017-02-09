@@ -19,14 +19,7 @@ namespace MercuryApi
 
         public string[][] Parse(IQueryCollection query) {
 
-            // TODO don't do toLower here, as other implementations of the path builder might try to be cleverer about 
-            // mapping the resource typename, inflection, whatever onto the DBContext model. actually existing impl is doing case-insensitive comparison anyway
-            
-            var allIncludePaths = WebUtility.UrlDecode(query.ToString())    // TODO query.ToString() won't work, actually have to do something sensible here
-                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(s => s.Trim().ToLower())
-                .Distinct()
-                .ToArray();
+            var allIncludePaths = ExtractFromQueryString(query);
 
             allIncludePaths = RemoveRedundantNavigations(allIncludePaths);
 
@@ -34,6 +27,19 @@ namespace MercuryApi
             return allIncludePaths
                 .Select(fullPath => fullPath.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries))
                 .ToArray();
+        }
+
+        private string[] ExtractFromQueryString(IQueryCollection query) {
+
+            var includeRequests = query
+                .Where(q => q.Key.Equals("include", StringComparison.OrdinalIgnoreCase))
+                .SelectMany(q => q.Value.ToList())
+                .Select(s => WebUtility.UrlDecode(s))
+                .SelectMany(s => s.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                .Select(s => s.Trim())
+                .ToArray();
+
+            return includeRequests;
         }
 
         /// TODO: move out of parser into separate optimisation step
@@ -44,6 +50,7 @@ namespace MercuryApi
         private string[] RemoveRedundantNavigations(string[] includePaths) {
 
             var remainingNavigationPaths = includePaths
+                .Distinct()
                 .OrderByDescending(s => s.Length)
                 .Select((p, i) => new { Path = p, Index = i })
                 .ToList();
