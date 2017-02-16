@@ -60,7 +60,7 @@ namespace MercuryApi
                 
                 // If any path is shorter than this one, and is a prefix of this one, it is redundant
                 // (because traversing the longer path covers the same ground as the shorter path anyway)
-                if (remainingNavigationPaths.Any(x => x.Index < me.Index && x.Path.StartsWith(me.Path))) {
+                if (remainingNavigationPaths.Any(x => x.Index < me.Index && x.Path.StartsWith(me.Path, StringComparison.OrdinalIgnoreCase))) {
                     remainingNavigationPaths.RemoveAt(i);
                 }
             }
