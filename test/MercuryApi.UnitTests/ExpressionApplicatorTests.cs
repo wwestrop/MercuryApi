@@ -47,6 +47,18 @@ namespace MercuryApi.UnitTests
 
             //db.Set<Customer>().Include(c => c.Orders).ThenInclude(o => o.Products).ThenInclude(p => p.Manufacturer).ThenInclude(m => m.Address);
             //sut.Build("Orders, Orders.products, Orders.products.mfgr, Orders.products.mfgr.address, Orders.products.reviews");
+
+            Assert.True(false);
+        }
+
+        [Fact]
+        public void Multiple_Include_Paths() {
+            // Arrange
+
+            // Act
+
+            // Assert
+            Assert.True(false);
         }
     }
 }

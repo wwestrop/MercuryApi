@@ -25,20 +25,20 @@ namespace MercuryApi.UnitTests
             var result = _sut.Build(typeof(Product), queryParseResult);
 
             // Assert
-            Assert.False(true);
+            Assert.Equal("Seller.Address", result);
         }
 
         [Fact]
         public void Builds_NavigationPath_Over_A_Collection() {
 
             // Arrange
-            var queryParseResult = new[] { "Orders", "products", "manufacturer", "ADdREss" };
+            var queryParseResult = new[] { "Orders", "Products", "Manufacturer", "Address" };
 
             // Act
             var result = _sut.Build(typeof(Customer), queryParseResult);
 
             // Assert
-            Assert.False(true);
+            Assert.Equal("Orders.Products.Manufacturer.Address", result);
         }
 
         [Fact]
@@ -51,18 +51,20 @@ namespace MercuryApi.UnitTests
             var result = _sut.Build(typeof(Product), queryParseResult);
 
             // Assert
-            Assert.False(true);
+            Assert.Equal("Seller.Address", result);
         }
 
         [Fact]
         public void Corrects_Capitalisation_For_Navigation_Over_A_Collection() {
 
             // Arrange
+            var queryParseResult = new[] { "Orders", "products", "manufacturer", "ADdREss" };
 
             // Act
+            var result = _sut.Build(typeof(Customer), queryParseResult);
 
             // Assert
-            Assert.False(true);
+            Assert.Equal("Orders.Products.Manufacturer.Address", result);
         }
 
         [Fact]
