@@ -1,4 +1,4 @@
-﻿namespace MercuryApi.Entities
+﻿namespace MercuryApi.UnitTests.Entities
 {
     public class Address
     {

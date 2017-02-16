@@ -17,6 +17,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0-beta4-build1194" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\MercuryApi\MercuryApi.csproj" />
+    <ProjectReference Include="..\..\src\MercuryApi\MercuryApi.csproj" />
   </ItemGroup>
 </Project>

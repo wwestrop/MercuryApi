@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MercuryApi.Entities
+namespace MercuryApi.UnitTests.Entities
 {
     public class MyContext : DbContext {
 

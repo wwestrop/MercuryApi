@@ -10,10 +10,10 @@ namespace MercuryApi.UnitTests
     public class QueryParserTests
     {
 
-        private readonly QueryParser sut;
+        private readonly QueryParser _sut;
 
         public QueryParserTests() {
-            sut = new QueryParser();
+            _sut = new QueryParser();
         }
 
         // multi-part includes (dotted)  
@@ -26,7 +26,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var result = sut.Parse(queryString);
+            var result = _sut.Parse(queryString);
 
             // Assert
             Assert.Equal(0, result.Length);
@@ -41,7 +41,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             Assert.Equal(0, includePaths.Length);
@@ -78,7 +78,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             includePaths = includePaths.OrderBy(p => p[0]).ToArray();
@@ -122,7 +122,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             Assert.Equal(1, includePaths.Length);
@@ -140,7 +140,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             includePaths = includePaths.OrderBy(p => p[0]).ToArray();
@@ -167,7 +167,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             includePaths = includePaths.OrderBy(p => p[0]).ToArray();
@@ -192,7 +192,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             includePaths = includePaths.OrderBy(p => p[0]).ToArray();
@@ -215,7 +215,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             includePaths = includePaths.OrderBy(p => p[0]).ToArray();
@@ -234,7 +234,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             includePaths = includePaths.OrderBy(p => p[0]).ToArray();
@@ -258,7 +258,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             includePaths = includePaths.OrderBy(p => p[0]).ToArray();
@@ -293,7 +293,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             includePaths = includePaths.OrderBy(p => p[2]).ToArray();
@@ -317,7 +317,7 @@ namespace MercuryApi.UnitTests
         }
 
         /// <summary>
-        /// i.e. redundant includes which are already picked up by other include params
+        /// i.e. redundant includes which are already picked up by other include params // TODO maybe move this code out of parser into 'optimiser'
         /// </summary>
         [Fact]
         public void Optimises_Multiple_Dotted_Include_Parameters_Where_One_Is_Subset_Of_Another() {
@@ -328,7 +328,7 @@ namespace MercuryApi.UnitTests
             });
 
             // Act
-            var includePaths = sut.Parse(queryString);
+            var includePaths = _sut.Parse(queryString);
 
             // Assert
             Assert.Equal(1, includePaths.Length);

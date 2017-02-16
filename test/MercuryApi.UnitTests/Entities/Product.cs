@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MercuryApi.Entities
+namespace MercuryApi.UnitTests.Entities
 {
     public class Product
     {
