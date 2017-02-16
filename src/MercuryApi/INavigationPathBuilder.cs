@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MercuryApi.Exceptions;
+using System;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
@@ -43,12 +44,16 @@ namespace MercuryApi
             var thisMemberAccess = memberAccesses[0];
             var subsequentMemberAccesses = memberAccesses.Skip(1).ToArray();
 
-            // For the first level of dependency to walk, correct the casing of the string
-            var caseCorrectedProperty = entityType.GetProperties()
-                .SingleOrDefault(p => p.Name.Equals(memberAccesses[0], StringComparison.OrdinalIgnoreCase));
+            // For the first level of dependency to walk, correct the casing of the request-string based upon what actually exists on the entity
+            var caseCorrectedProperties = entityType.GetProperties()
+                .Where(p => p.Name.Equals(memberAccesses[0], StringComparison.OrdinalIgnoreCase));
+            if (caseCorrectedProperties.Count() > 1) {
+                throw new AmbiguousNavigationException(thisMemberAccess, entityType);
+            }
 
+            var caseCorrectedProperty = caseCorrectedProperties.FirstOrDefault();
             if (caseCorrectedProperty == null) {
-                throw new ArgumentException($"Cannot access member '{thisMemberAccess}' of type '{entityType.Name}'. Please check spelling and pluralisation.");
+                throw new InvalidNavigationException(thisMemberAccess, entityType);
             }
 
             if (!subsequentMemberAccesses.Any()) {

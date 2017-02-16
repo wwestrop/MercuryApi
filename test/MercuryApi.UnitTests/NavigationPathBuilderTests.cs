@@ -89,13 +89,20 @@ namespace MercuryApi.UnitTests
         public void Incorrect_NavigationProperty_Over_A_Collection_Throws_Helpful_Exception() {
 
             // Arrange
-            var queryParseResult = new[] { "wishlist" };
+            var queryParseResult = new[] { "orders", "trackingInformation" };
 
             // Act
-            var result = _sut.Build(typeof(Customer), queryParseResult);
+            InvalidNavigationException thrownException = null;
+            try {
+                var result = _sut.Build(typeof(Customer), queryParseResult);
+            }
+            catch (InvalidNavigationException e) {
+                thrownException = e;
+            }
 
             // Assert
-            Assert.True(false);
+            Assert.NotNull(thrownException);
+            Assert.True(thrownException.Message.Contains("trackingInformation")); // The exception explicitly names the offending queryParameter
         }
 
         [Fact]

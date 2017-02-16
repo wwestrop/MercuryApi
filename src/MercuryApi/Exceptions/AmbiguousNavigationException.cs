@@ -11,7 +11,7 @@ namespace MercuryApi.Exceptions
     public class AmbiguousNavigationException : Exception
     {
         public AmbiguousNavigationException(string requestedNavigation, Type entityType)
-            :base ($"Entity type '{entityType.Name}' has multiple related entities which could match the requested include path '{requestedNavigation}'") {
+            :base ($"Entity type '{entityType.Name}' has multiple related entities which match the requested include path '{requestedNavigation}'") {
         }
     }
 }
