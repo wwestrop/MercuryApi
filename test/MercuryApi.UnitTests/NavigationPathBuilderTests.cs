@@ -1,4 +1,5 @@
-﻿using MercuryApi.UnitTests.Entities;
+﻿using MercuryApi.Exceptions;
+using MercuryApi.UnitTests.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,8 +14,6 @@ namespace MercuryApi.UnitTests
         public NavigationPathBuilderTests() {
             _sut = new NavigationPathBuilder();
         }
-
-        // var queryParseResult = new[] { "Orders", "Products", "Manufacturer", "Address" };
 
         [Fact]
         public void Builds_Simple_NavigationPath() {
@@ -73,11 +72,11 @@ namespace MercuryApi.UnitTests
             var queryParseResult = new[] { "wishlist" };
 
             // Act
-            ArgumentException thrownException = null;
+            InvalidNavigationException thrownException = null;
             try {
                 var result = _sut.Build(typeof(Customer), queryParseResult);
             }
-            catch(ArgumentException e) {
+            catch(InvalidNavigationException e) {
                 thrownException = e;
             }
 
@@ -106,7 +105,7 @@ namespace MercuryApi.UnitTests
             var queryParseResult = new[] { "FOO" };
 
             // Act & Assert
-            Assert.Throws<InvalidOperationException>(() => _sut.Build(typeof(AmbiguousEntity), queryParseResult));
+            Assert.Throws<AmbiguousNavigationException>(() => _sut.Build(typeof(AmbiguousEntity), queryParseResult));
         }
 
         /*
