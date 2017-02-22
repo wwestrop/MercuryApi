@@ -10,7 +10,7 @@ namespace MercuryApi.Extensions
         // Maybe not an extension method on DbContext, but an instance of MySpecialDbContext, derived from DbContext, with the method on it??????
         internal static IHttpContextAccessor _httpContextAccessor;
         internal static IQueryParser _parser;
-        internal static IApplicator _applicator;
+        internal static IExpressionApplicator _applicator;
         internal static INavigationPathBuilder _pathBuilder;
 
         /// <summary>

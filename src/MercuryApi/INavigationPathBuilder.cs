@@ -28,7 +28,7 @@ namespace MercuryApi
     /// this will fail. Also if the relationship names on your API-exposed resource differ
     /// from their Entity Framework internal representation (except for casing, it will also fail).
     /// </remarks>
-    internal class NavigationPathBuilder {
+    internal class NavigationPathBuilder : INavigationPathBuilder {
 
         /// <summary>
         /// Recursive function which, starting from an object of the specified type, navigates from one

@@ -5,10 +5,10 @@ namespace MercuryApi.UnitTests
 {
     public class ExpressionApplicatorTests
     {
-        private readonly Applicator _sut;
+        private readonly ExpressionApplicator _sut;
 
         public ExpressionApplicatorTests () {
-            _sut = new Applicator();
+            _sut = new ExpressionApplicator();
         }
 
         // x Avoid "backfilling" (e.g. if including "basket" and "basket.products", only need one .Include ---- if any earlier paths .beginWith() this path, exclude it)
