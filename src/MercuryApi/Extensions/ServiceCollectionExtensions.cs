@@ -4,12 +4,15 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace MercuryApi.Extensions
 {
-    public static class ServiceCollectionExtensions {
-        public static IServiceCollection AddMercuryApi(this IServiceCollection services) {
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<RequestScopedStorage>();
+	public static class ServiceCollectionExtensions {
 
-            return services;
-        }
-    }
+		// TODO: I don't believe this library's end-consumer will need this, as the public ctor news up all the required concrete types
+		// TODO: However, adding ASP's IHttpContextContextAccessor via this call might be a nice convenience. 
+		public static IServiceCollection AddMercuryApi(this IServiceCollection services) {
+			services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+			return services;
+		}
+
+	}
 }

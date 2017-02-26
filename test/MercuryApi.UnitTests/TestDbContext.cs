@@ -4,16 +4,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MercuryApi.UnitTests
 {
-    internal class TestDbContext : MercuryDbContext {
+	internal class TestDbContext : MercuryDbContext {
 
-        internal TestDbContext(
+		internal TestDbContext(
 			DbContextOptions options,
 			IHttpContextAccessor httpContextAccess,
 			IQueryParser httpQueryParser, 
 			INavigationPathBuilder navPathBuilder,
 			IExpressionApplicator expressionApplicator)
-            
-			: base(options, httpContextAccess, httpQueryParser, navPathBuilder, expressionApplicator) { }
+			
+		: base(
+			  options,
+			  httpContextAccess, 
+			  httpQueryParser,
+			  navPathBuilder,
+			  expressionApplicator) {
+		}
 
 		public DbSet<Address> Addresses { get; set; }
 

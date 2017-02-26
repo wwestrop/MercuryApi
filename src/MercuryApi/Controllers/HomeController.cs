@@ -2,38 +2,36 @@
 
 namespace MercuryApi.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly RequestScopedStorage _rss; 
+	public class HomeController : Controller
+	{
 
-        public HomeController(RequestScopedStorage rss) {
-            this._rss = rss;
-        }
+		public HomeController() {
+		}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+		public IActionResult Index()
+		{
+			return View();
+		}
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
+		public IActionResult About()
+		{
+			ViewData["Message"] = "Your application description page.";
 
-            // HttpContext
+			// HttpContext
 
-            return View();
-        }
+			return View();
+		}
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
+		public IActionResult Contact()
+		{
+			ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
+			return View();
+		}
 
-        public IActionResult Error()
-        {
-            return View();
-        }
-    }
+		public IActionResult Error()
+		{
+			return View();
+		}
+	}
 }

@@ -2,14 +2,16 @@
 
 namespace MercuryApi.UnitTests.Entities
 {
-    public class Product
-    {
-        public string Name { get; set; }
+	public class Product
+	{
+		public int Id { get; set; }
 
-        public Manufacturer Manufacturer { get; set; }
+		public string Name { get; set; }
 
-        public IEnumerable<Review> Reviews { get; set; }
+		public Manufacturer Manufacturer { get; set; }
 
-        public Seller Seller { get; set; }
-    }
+		public IEnumerable<Review> Reviews { get; set; }
+
+		public Seller Seller { get; set; }
+	}
 }
