@@ -32,7 +32,7 @@ namespace MercuryApi.UnitTests
 			_sut = new TestDbContext(optsBuilder.Options, _httpContextAccess, _httpQueryParser, _navPathBuilder, _applicator);
 		}
 
-		[Fact]
+		[Fact(Skip="Finish implementing these (and get code coverage working)")]
 		public void Multiple_Include_Paths() {
 
 			// Arrange
