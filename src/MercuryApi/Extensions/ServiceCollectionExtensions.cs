@@ -6,8 +6,9 @@ namespace MercuryApi.Extensions
 {
 	public static class ServiceCollectionExtensions {
 
-		// TODO: I don't believe this library's end-consumer will need this, as the public ctor news up all the required concrete types
-		// TODO: However, adding ASP's IHttpContextContextAccessor via this call might be a nice convenience. 
+		/// <summary>
+		/// Adds the supporting frameworks required for MercuryApi into ASP.NET's service collection.
+		/// </summary>
 		public static IServiceCollection AddMercuryApi(this IServiceCollection services) {
 			services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
