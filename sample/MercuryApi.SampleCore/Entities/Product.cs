@@ -10,8 +10,10 @@ namespace MercuryApi.Sample.Entities
 
 		public Manufacturer Manufacturer { get; set; }
 
-		public IEnumerable<Review> Reviews { get; set; }
+		public ICollection<Review> Reviews { get; set; }
 
 		public Seller Seller { get; set; }
+
+		public override string ToString() => this.Name;
 	}
 }

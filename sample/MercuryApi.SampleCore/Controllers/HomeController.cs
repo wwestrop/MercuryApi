@@ -1,5 +1,6 @@
 ﻿using MercuryApi.Sample.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace MercuryApi.Sample.Controllers
 {
@@ -17,49 +18,49 @@ namespace MercuryApi.Sample.Controllers
 
 		[Route("/address")]
         public IActionResult Address() {
-			Address result = null;
+			var result = this._dbCtxt.IncludedSet<Address>().ToList();
             return Json(result);
         }
 
 		[Route("/basket")]
 		public IActionResult Basket() {
-			Basket result = null;
+			var result = this._dbCtxt.IncludedSet<Basket>().ToList();
 			return Json(result);
 		}
 
 		[Route("/customer")]
 		public IActionResult Customer() {
-			Customer result = null;
+			var result = this._dbCtxt.IncludedSet<Customer>().ToList();
 			return Json(result);
 		}
 
 		[Route("/manufacturer")]
 		public IActionResult Manufacturer() {
-			Manufacturer result = null;
+			var result = this._dbCtxt.IncludedSet<Manufacturer>().ToList();
 			return Json(result);
 		}
 
 		[Route("/order")]
 		public IActionResult Order() {
-			Order result = null;
+			var result = this._dbCtxt.IncludedSet<Order>().ToList();
 			return Json(result);
 		}
 
-		[Route("/prodct")]
+		[Route("/product")]
 		public IActionResult Product() {
-			Product result = null;
+			var result = this._dbCtxt.IncludedSet<Product>().ToList();
 			return Json(result);
 		}
 
 		[Route("/review")]
 		public IActionResult Review() {
-			Review result = null;
+			var result = this._dbCtxt.IncludedSet<Review>().ToList();
 			return Json(result);
 		}
 
 		[Route("/seller")]
 		public IActionResult Seller() {
-			Seller result = null;
+			var result = this._dbCtxt.IncludedSet<Seller>().ToList();
 			return Json(result);
 		}
 	}

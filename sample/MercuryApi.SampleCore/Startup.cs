@@ -65,7 +65,7 @@ namespace MercuryApi.SampleCore
         }
 
 		private void ConfigureDbContext(DbContextOptionsBuilder optsBuilder) {
-			optsBuilder.UseSqlite("Data Source=:memory:;Version=3;New=True;");
+			optsBuilder.UseSqlite(@"Data Source=sampledata.sqlite3");
 		}
 	}
 }

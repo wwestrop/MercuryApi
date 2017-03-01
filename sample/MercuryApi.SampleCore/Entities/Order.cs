@@ -9,8 +9,8 @@ namespace MercuryApi.Sample.Entities
 
 		public DateTime Date { get; set; }
 
-		public Address DeliverTo { get; set; }
+		public Customer Customer { get; set; }
 
-		public IEnumerable<Product> Products { get; set; }
+		public ICollection<Product> Products { get; set; }
 	}
 }

@@ -8,10 +8,10 @@ namespace MercuryApi.Sample.Entities
 
 		public Address Address { get; set; }
 
-		public Basket Basket { get; set; }
-
 		public string Name { get; set; }
 
 		public IEnumerable<Order> Orders { get; set; }
+
+		public override string ToString() => this.Name;
 	}
 }
