@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{8AEACD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MercuryApi.SampleCore", "sample\MercuryApi.SampleCore\MercuryApi.SampleCore.csproj", "{6A094866-920A-45C6-AA32-BB8E67528443}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MercuryApi.SampleNet46", "sample\MercuryApi.SampleNet46\MercuryApi.SampleNet46.csproj", "{264B0D98-5800-4990-9A18-59CF63ABCCC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,18 @@ Global
 		{6A094866-920A-45C6-AA32-BB8E67528443}.Release|x64.Build.0 = Release|Any CPU
 		{6A094866-920A-45C6-AA32-BB8E67528443}.Release|x86.ActiveCfg = Release|Any CPU
 		{6A094866-920A-45C6-AA32-BB8E67528443}.Release|x86.Build.0 = Release|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Debug|x64.Build.0 = Debug|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Debug|x86.Build.0 = Debug|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Release|x64.ActiveCfg = Release|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Release|x64.Build.0 = Release|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Release|x86.ActiveCfg = Release|Any CPU
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +83,6 @@ Global
 		{ACA45815-3094-45C9-8364-F08AA31E4D9E} = {01B3982F-D1A1-4AEB-8534-04BBA48F2917}
 		{A0723B97-42C3-405C-903B-A1CA491730DF} = {8A2318D1-BCFA-436E-AC5A-E3CB6B2C1696}
 		{6A094866-920A-45C6-AA32-BB8E67528443} = {8AEACD5C-20CA-42DF-BDC9-AABF52E41ECC}
+		{264B0D98-5800-4990-9A18-59CF63ABCCC8} = {8AEACD5C-20CA-42DF-BDC9-AABF52E41ECC}
 	EndGlobalSection
 EndGlobal

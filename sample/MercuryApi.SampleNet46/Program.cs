@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 
-namespace MercuryApi.SampleCore
+namespace MercuryApi.SampleNet46
 {
 	public class Program
 	{
@@ -16,6 +16,7 @@ namespace MercuryApi.SampleCore
 				.UseContentRoot(Directory.GetCurrentDirectory())
 				.UseIISIntegration()
 				.UseStartup<Startup>()
+				.UseApplicationInsights()
 				.Build();
 
 			host.Run();

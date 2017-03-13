@@ -1,8 +1,8 @@
-﻿using MercuryApi.Sample.Entities;
+﻿using MercuryApi.SampleNet46.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
-namespace MercuryApi.Sample.Controllers
+namespace MercuryApi.SampleNet46.Controllers
 {
 	public class HomeController : Controller
 	{

@@ -3,11 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MercuryApi.Extensions;
-using MercuryApi.Sample;
 using Microsoft.EntityFrameworkCore;
+using MercuryApi.Extensions;
 
-namespace MercuryApi.SampleCore
+namespace MercuryApi.SampleNet46
 {
 	public class Startup
 	{
