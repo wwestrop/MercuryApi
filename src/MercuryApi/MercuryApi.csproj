@@ -4,15 +4,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" />
-    <EmbeddedResource Include="**\*.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="1.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>

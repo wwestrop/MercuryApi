@@ -8,8 +8,12 @@
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="sampledata.sqlite3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.1.0" />
-    <PackageReference Include="Microsoft.NETCore.App" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="1.1.0" />
@@ -26,15 +30,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\MercuryApi\MercuryApi.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Update="sampledata.sqlite3">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 </Project>
