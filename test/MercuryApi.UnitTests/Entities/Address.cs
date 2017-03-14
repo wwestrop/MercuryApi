@@ -10,5 +10,7 @@
 
 		public string Postcode { get; set; }
 
+		public override string ToString() => $"{Line1}, {Line2}, {Postcode}";
+
 	}
 }

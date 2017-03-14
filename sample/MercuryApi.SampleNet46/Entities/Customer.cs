@@ -12,6 +12,8 @@ namespace MercuryApi.SampleNet46.Entities
 
 		public IEnumerable<Order> Orders { get; set; }
 
+		public IEnumerable<Review> Reviews { get; set; }
+
 		public override string ToString() => this.Name;
 	}
 }

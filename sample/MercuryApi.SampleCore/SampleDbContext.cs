@@ -12,8 +12,6 @@ namespace MercuryApi.Sample
 
 		public DbSet<Address> Addresses { get; set; }
 
-		public DbSet<Basket> Baskets { get; set; }
-
 		public DbSet<Customer> Customers { get; set; }
 
 		public DbSet<Manufacturer> Manufacturers { get; set; }

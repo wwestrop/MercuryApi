@@ -11,6 +11,6 @@ namespace MercuryApi.Sample.Entities
 
 		public Customer Customer { get; set; }
 
-		public ICollection<Product> Products { get; set; }
+		public ICollection<OrderProduct> Products { get; set; }
 	}
 }

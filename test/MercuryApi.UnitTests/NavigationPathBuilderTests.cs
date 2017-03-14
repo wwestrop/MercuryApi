@@ -16,52 +16,52 @@ namespace MercuryApi.UnitTests
 		public void Builds_Simple_NavigationPath() {
 
 			// Arrange
-			var queryParseResult = new[] { "Seller", "Address" };
+			var queryParseResult = new[] { "Customer", "Address" };
 
 			// Act
-			var result = _sut.Build(typeof(Product), queryParseResult);
+			var result = _sut.Build(typeof(Order), queryParseResult);
 
 			// Assert
-			Assert.Equal("Seller.Address", result);
+			Assert.Equal("Customer.Address", result);
 		}
 
 		[Fact]
 		public void Builds_NavigationPath_Over_A_Collection() {
 
 			// Arrange
-			var queryParseResult = new[] { "Orders", "Products", "Manufacturer", "Address" };
+			var queryParseResult = new[] { "Reviews", "Product", "Manufacturer", "Address" };
 
 			// Act
 			var result = _sut.Build(typeof(Customer), queryParseResult);
 
 			// Assert
-			Assert.Equal("Orders.Products.Manufacturer.Address", result);
+			Assert.Equal("Reviews.Product.Manufacturer.Address", result);
 		}
 
 		[Fact]
 		public void Corrects_Capitalisation_For_Simple_NavigationPath() {
 
 			// Arrange
-			var queryParseResult = new[] { "seller", "adDReSs" };
+			var queryParseResult = new[] { "customer", "adDReSs" };
 
 			// Act
-			var result = _sut.Build(typeof(Product), queryParseResult);
+			var result = _sut.Build(typeof(Order), queryParseResult);
 
 			// Assert
-			Assert.Equal("Seller.Address", result);
+			Assert.Equal("Customer.Address", result);
 		}
 
 		[Fact]
 		public void Corrects_Capitalisation_For_Navigation_Over_A_Collection() {
 
 			// Arrange
-			var queryParseResult = new[] { "Orders", "products", "manufacturer", "ADdREss" };
+			var queryParseResult = new[] { "RevieWS", "product", "manUfaCturer", "ADdREss" };
 
 			// Act
 			var result = _sut.Build(typeof(Customer), queryParseResult);
 
 			// Assert
-			Assert.Equal("Orders.Products.Manufacturer.Address", result);
+			Assert.Equal("Reviews.Product.Manufacturer.Address", result);
 		}
 
 		[Fact]

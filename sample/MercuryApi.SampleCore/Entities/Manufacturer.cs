@@ -1,4 +1,6 @@
-﻿namespace MercuryApi.Sample.Entities
+﻿using System.Collections.Generic;
+
+namespace MercuryApi.Sample.Entities
 {
 	public class Manufacturer
 	{
@@ -7,6 +9,8 @@
 		public Address Address { get; set; }
 
 		public string Name { get; set; }
+
+		public ICollection<Product> Products { get; set; }
 
 		public override string ToString() => this.Name;
 	}

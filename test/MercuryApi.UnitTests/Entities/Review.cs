@@ -1,4 +1,6 @@
-﻿namespace MercuryApi.UnitTests.Entities
+﻿using System;
+
+namespace MercuryApi.UnitTests.Entities
 {
 	public class Review
 	{
@@ -6,6 +8,12 @@
 
 		public string Body { get; set; }
 
+		public Customer Customer { get; set; }
+
+		public Product Product { get; set; }
+
 		public int Rating { get; set; }
+
+		public override string ToString() => $"[{this.Customer?.Name}] ({this.Rating} stars) {this.Body.Substring(0, Math.Min(this.Body.Length, 60))}";
 	}
 }
