@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Primitives;
 using NSubstitute;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace MercuryApi.UnitTests
@@ -22,9 +23,9 @@ namespace MercuryApi.UnitTests
 
 		public MercuryDbContextTests() {
 			_httpContextAccess = Substitute.For<IHttpContextAccessor>();
-			_httpQueryParser = Substitute.For<IQueryParser>();
+			_httpQueryParser = new QueryParser();
 			_applicator = Substitute.For<IExpressionApplicator>();
-			_navPathBuilder = Substitute.For<INavigationPathBuilder>();
+			_navPathBuilder = new NavigationPathBuilder();
 
 			var optsBuilder = new DbContextOptionsBuilder<MercuryDbContext>()
 				.UseInMemoryDatabase("TestDB");
@@ -32,19 +33,33 @@ namespace MercuryApi.UnitTests
 			_sut = new TestDbContext(optsBuilder.Options, _httpContextAccess, _httpQueryParser, _navPathBuilder, _applicator);
 		}
 
-		[Fact(Skip="Finish implementing these (and get code coverage working)")]
+		[Fact]
 		public void Multiple_Include_Paths() {
 
 			// Arrange
 			_httpContextAccess.HttpContext.Request.Query = new QueryCollection(new Dictionary<string, StringValues> {
-				{ "include", new StringValues("orders") },
+				{ "include", new StringValues(new [] {"orders.products", "address"}) },
 			});
 
 			// Act
 			var result = _sut.IncludedSet<Customer>();
 
 			// Assert
-			Assert.True(false);
+			_applicator.Received().Include(Arg.Any<IQueryable<Customer>>(), "Orders.Products");
+			_applicator.Received().Include(Arg.Any<IQueryable<Customer>>(), "Address");
+		}
+
+		[Fact]
+		public void No_Include_Paths() {
+
+			// Arrange
+			_httpContextAccess.HttpContext.Request.Query = new QueryCollection(new Dictionary<string, StringValues>());
+
+			// Act
+			var result = _sut.IncludedSet<Customer>();
+
+			// Assert
+			_applicator.DidNotReceive().Include(Arg.Any<IQueryable<Customer>>(), Arg.Any<string>());
 		}
 	}
 }
