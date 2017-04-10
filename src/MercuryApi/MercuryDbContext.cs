@@ -64,7 +64,7 @@ namespace MercuryApi
 			var rawDbSet = this.Set<TEntity>();
 			IQueryable<TEntity> result = rawDbSet;
 
-			// TODO optimise here in a separate step maybe?? (RemoveBackfills) - currently done within parser
+			// TODO optimise here in a separate step maybe?? (Removing redundant navigations currently done within parser)
 			var requestedIncludeQuery = _httpContextAccess.HttpContext.Request.Query;
 			var parsedIncludes = _httpQueryParser.Parse(requestedIncludeQuery);
 

@@ -221,7 +221,7 @@ namespace MercuryApi.UnitTests
 			includePaths = includePaths.OrderBy(p => p[0]).ToArray();
 			Assert.Equal(1, includePaths.Length);
 			var includePath = includePaths[0];
-			Assert.Equal(1, includePath.Length);
+			Assert.Equal(1, includePath.Count);
 			Assert.Equal("employee", includePath[0]);
 		}
 
@@ -241,7 +241,7 @@ namespace MercuryApi.UnitTests
 			Assert.Equal(1, includePaths.Length);
 
 			var includePath = includePaths[0];
-			Assert.Equal(2, includePath.Length);
+			Assert.Equal(2, includePath.Count);
 			var navProperty1_a = includePaths[0][0];
 			var navProperty1_b = includePaths[0][1];
 
@@ -263,9 +263,9 @@ namespace MercuryApi.UnitTests
 			// Assert
 			includePaths = includePaths.OrderBy(p => p[0]).ToArray();
 			Assert.Equal(3, includePaths.Length);
-			Assert.Equal(2, includePaths[0].Length);
-			Assert.Equal(1, includePaths[1].Length);
-			Assert.Equal(2, includePaths[2].Length);
+			Assert.Equal(2, includePaths[0].Count);
+			Assert.Equal(1, includePaths[1].Count);
+			Assert.Equal(2, includePaths[2].Count);
 
 			var navProperty1_a = includePaths[0][0];
 			var navProperty1_b = includePaths[0][1];
@@ -298,8 +298,8 @@ namespace MercuryApi.UnitTests
 			// Assert
 			includePaths = includePaths.OrderBy(p => p[2]).ToArray();
 			Assert.Equal(2, includePaths.Length);
-			Assert.Equal(3, includePaths[0].Length);
-			Assert.Equal(3, includePaths[1].Length);
+			Assert.Equal(3, includePaths[0].Count);
+			Assert.Equal(3, includePaths[1].Count);
 
 			var navProperty1_a = includePaths[0][0];
 			var navProperty1_b = includePaths[0][1];
@@ -332,7 +332,7 @@ namespace MercuryApi.UnitTests
 
 			// Assert
 			Assert.Equal(1, includePaths.Length);
-			Assert.Equal(4, includePaths[0].Length);
+			Assert.Equal(4, includePaths[0].Count);
 
 			var navProperty1_a = includePaths[0][0];
 			var navProperty1_b = includePaths[0][1];

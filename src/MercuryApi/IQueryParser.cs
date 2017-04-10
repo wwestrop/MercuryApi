@@ -12,12 +12,12 @@ namespace MercuryApi
 	/// </summary>
 	internal interface IQueryParser
 	{
-		string[][] Parse(IQueryCollection query);
+		QueryParseResult[] Parse(IQueryCollection query);
 	}
 
 	internal class QueryParser : IQueryParser {
 
-		public string[][] Parse(IQueryCollection query) {
+		public QueryParseResult[] Parse(IQueryCollection query) {
 
 			var allIncludePaths = ExtractFromQueryString(query);
 
@@ -26,6 +26,7 @@ namespace MercuryApi
 			// Separate the dotted navigation strings of into array of strings, one array element per property-navigation
 			return allIncludePaths
 				.Select(fullPath => fullPath.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries))
+				.Select(p => new QueryParseResult(p))
 				.ToArray();
 		}
 

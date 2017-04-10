@@ -14,14 +14,13 @@ namespace MercuryApi
 
 		/// <param name="entityType">The type of the root entity, on which the provided navigation path will be applied</param>
 		/// <param name="memberAccesses">The ordered list of navigation properties the client wishes to walk down and return</param>
-		string Build(Type entityType, string[] memberAccesses);
+		string Build(Type entityType, QueryParseResult memberAccesses);
 
 	}
 
 	/// <summary>
-	/// In order to build an EF-compatible navigation path, the 
-	/// 
-	/// client-provided path is walked and inconsistencies in capitalisation are corrected. 
+	/// In order to build an EF-compatible navigation path, the client-provided
+	/// path is walked and inconsistencies in capitalisation are corrected. 
 	/// </summary>
 	/// <remarks>
 	/// This does mean that if two members are exposed which differ only in capitalisation,
@@ -35,7 +34,16 @@ namespace MercuryApi
 		/// related entity to the next via the provided <c>navigationPathEntries</c>, and returns a
 		/// single string, corrected for casing, which is suitable for an EntityFramework .Include(string) call
 		/// </summary>
-		public string Build(Type entityType, string[] memberAccesses) {
+		public string Build(Type entityType, QueryParseResult memberAccesses) {
+			return Build(entityType, memberAccesses.ToArray());
+		}
+
+		/// <summary>
+		/// Recursive function which, starting from an object of the specified type, navigates from one
+		/// related entity to the next via the provided <c>navigationPathEntries</c>, and returns a
+		/// single string, corrected for casing, which is suitable for an EntityFramework .Include(string) call
+		/// </summary>
+		private string Build(Type entityType, string[] memberAccesses) {
 
 			if (memberAccesses == null || memberAccesses.Length == 0) {
 				throw new ArgumentNullException(nameof(memberAccesses));

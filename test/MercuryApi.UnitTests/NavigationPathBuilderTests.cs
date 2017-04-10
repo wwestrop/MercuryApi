@@ -16,7 +16,7 @@ namespace MercuryApi.UnitTests
 		public void Builds_Simple_NavigationPath() {
 
 			// Arrange
-			var queryParseResult = new[] { "Customer", "Address" };
+			var queryParseResult = new QueryParseResult(new[] { "Customer", "Address" });
 
 			// Act
 			var result = _sut.Build(typeof(Order), queryParseResult);
@@ -29,7 +29,7 @@ namespace MercuryApi.UnitTests
 		public void Builds_NavigationPath_Over_A_Collection() {
 
 			// Arrange
-			var queryParseResult = new[] { "Reviews", "Product", "Manufacturer", "Address" };
+			var queryParseResult = new QueryParseResult(new[] { "Reviews", "Product", "Manufacturer", "Address" });
 
 			// Act
 			var result = _sut.Build(typeof(Customer), queryParseResult);
@@ -42,7 +42,7 @@ namespace MercuryApi.UnitTests
 		public void Corrects_Capitalisation_For_Simple_NavigationPath() {
 
 			// Arrange
-			var queryParseResult = new[] { "customer", "adDReSs" };
+			var queryParseResult = new QueryParseResult(new [] { "customer", "adDReSs" });
 
 			// Act
 			var result = _sut.Build(typeof(Order), queryParseResult);
@@ -55,7 +55,7 @@ namespace MercuryApi.UnitTests
 		public void Corrects_Capitalisation_For_Navigation_Over_A_Collection() {
 
 			// Arrange
-			var queryParseResult = new[] { "RevieWS", "product", "manUfaCturer", "ADdREss" };
+			var queryParseResult = new QueryParseResult(new[] { "RevieWS", "product", "manUfaCturer", "ADdREss" });
 
 			// Act
 			var result = _sut.Build(typeof(Customer), queryParseResult);
@@ -68,7 +68,7 @@ namespace MercuryApi.UnitTests
 		public void Incorrect_NavigationProperty_Throws_Helpful_Exception() {
 
 			// Arrange
-			var queryParseResult = new[] { "wishlist" };
+			var queryParseResult = new QueryParseResult(new[] { "wishlist" });
 
 			// Act
 			InvalidNavigationException thrownException = null;
@@ -88,7 +88,7 @@ namespace MercuryApi.UnitTests
 		public void Incorrect_NavigationProperty_Over_A_Collection_Throws_Helpful_Exception() {
 
 			// Arrange
-			var queryParseResult = new[] { "orders", "trackingInformation" };
+			var queryParseResult = new QueryParseResult(new[] { "orders", "trackingInformation" });
 
 			// Act
 			InvalidNavigationException thrownException = null;
@@ -108,7 +108,7 @@ namespace MercuryApi.UnitTests
 		public void Ambiguous_NavigationProperty_Throws_Exception() {
 
 			// Arrange
-			var queryParseResult = new[] { "FOO" };
+			var queryParseResult = new QueryParseResult(new[] { "FOO" });
 
 			// Act & Assert
 			Assert.Throws<AmbiguousNavigationException>(() => _sut.Build(typeof(AmbiguousEntity), queryParseResult));
